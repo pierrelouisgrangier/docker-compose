@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_alpine
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./workspace/FrontDemo/dist/front-demo/browser/:/usr/share/nginx/html
+      - ./nginx/conf:/etc/nginx/conf.d
+  springboot-app:
+    image: openjdk:21-jdk-slim
+    container_name: springboot_container
+    volumes:
+      - ./workspace/RaphlysDemo/build/libs/:/app/
+    command: ["java", "-jar", "/app/RaphlysDemo-0.0.1-SNAPSHOT.jar"]
+

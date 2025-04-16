@@ -1,0 +1,2 @@
+ @ManyToMany(mappedBy = "courses")
+    private List<Student> students;
